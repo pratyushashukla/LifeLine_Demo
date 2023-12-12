@@ -2,7 +2,6 @@ import smtplib
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
 from flask import *
-from werkzeug.utils import secure_filename
 
 from dbconnect import *
 
@@ -40,13 +39,6 @@ def inn():
 @login_required
 def adminhome():
     return  render_template("Admin_Home.HTML")
-@app.route("/delete_report")
-@login_required
-def delete_report():
-    q="delete from report where Report_id=%s"
-    val=request.args.get('id')
-    iud(q,val)
-    return  '''<script>window.location='/donor_view_report'</script>'''
 
 @app.route("/edit_item")
 @login_required
@@ -136,16 +128,6 @@ def viewfeedback():
     q="SELECT `user`.`First_Name`,`user`.`Last_Name`,`feedback`.`Feedback`,`feedback`.`Date` FROM `feedback` JOIN `user` ON `feedback`.`Login_id`=`user`.`Login_id`"
     result=select(q)
     return  render_template("View_Feedback.html",val=result)
-
-
-
-@app.route("/viewreport")
-@login_required
-def viewreport():
-    q="SELECT `report`.`Date`,`donor`.`First_Name`,`donor`.`Last_Name`,`report`.`Report` FROM `report` JOIN `donor` ON `donor`.`Login_id`=`report`.`Login_id`"
-    result=select(q)
-    return  render_template("View_Report.html",val=result)
-
 
 @app.route("/add_donor",methods=['post'])
 @login_required
@@ -257,27 +239,6 @@ def view_status():
     ps=select(q)
     return  render_template("View_Status.html",val=ps)
 
-@app.route("/report_add",methods=['post'])
-@login_required
-def report_add():
-    id=session['login_id']
-    file = request.files['file']
-    fname = secure_filename(file.name)
-    file.save("static/report/" + fname)
-    q="insert into report values(null,%s,curdate(),%s)"
-    val=str(id),fname
-    fun=iud(q,val)
-    return  '''<script>alert("Successfully added");window.location='/report';</script>'''
-
-@app.route("/donor_view_report",methods=['post','get'])
-@login_required
-def donor_view_report():
-    id = session['login_id']
-    q="select * from report where Login_id=%s"
-    val=str(id)
-    fun=selectall(q,val)
-    return  render_template("Donor_View_Report.html",vals=fun)
-
 
 @app.route("/view_item")
 @login_required
@@ -292,17 +253,6 @@ def view_item():
 @login_required
 def add_delivery_agent():
     return  render_template("Add_Delivery_Agent.html")
-
-@app.route("/report")
-@login_required
-def report():
-    user_id=request.args.get('uid')
-    session['uid']=user_id
-    did=request.args.get('did')
-    session['did'] = did
-    item=request.args.get('item')
-    session['item'] = item
-    return  render_template("Report.html")
 
 @app.route("/login_code",methods=['post'])
 
@@ -345,7 +295,7 @@ def register_donor():
             gmail = smtplib.SMTP('smtp.gmail.com', 587)
             gmail.ehlo()
             gmail.starttls()
-            gmail.login('shafeenshaznfc@gmail.com', '14731473')
+            gmail.login('shareefshaznfc@gmail.com', '14731473')
         except Exception as e:
             print("Couldn't setup email!!" + str(e))
 
@@ -394,7 +344,7 @@ def register_deliver_agent():
             gmail = smtplib.SMTP('smtp.gmail.com', 587)
             gmail.ehlo()
             gmail.starttls()
-            gmail.login('shafeenshaznfc@gmail.com', '14731473')
+            gmail.login('shareefshaznfc@gmail.com', '14731473')
         except Exception as e:
             print("Couldn't setup email!!" + str(e))
 

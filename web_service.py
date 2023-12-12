@@ -140,7 +140,7 @@ def forgotpassword():
             gmail = smtplib.SMTP('smtp.gmail.com', 587)
             gmail.ehlo()
             gmail.starttls()
-            gmail.login('shafeenshaznfc@gmail.com', '14731473')
+            gmail.login('shareefshaznfc@gmail.com', '14731473')
         except Exception as e:
             print("Couldn't setup email!!" + str(e))
 
