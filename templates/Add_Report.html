@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/donor_view_report">
+  <div align="center">
+    <table width="719" height="137" border="0">
+      <tr>
+        <th width="223" height="74">AGENT NAME </th>
+        <th width="187">ITEM DETAILS </th>
+        <th width="147">USER DETAILS </th>
+        <td width="134">&nbsp;</td>
+      </tr>
+      {% for i in val %}
+      <tr>
+        <td height="47">{{i[0]}} {{i[1]}}</td>
+        <td> {{i[4]}} : {{i[5]}}&nbsp;</td>
+        <td> {{i[7]}} {{i[8]}}</td>
+        <th><a href="/report?did={{i[2]}}& uid={{i[10]}} & item={{i[3]}}">ADD REPORT</a></th>
+      </tr>
+      {%endfor%}
+    </table>
+  </div>
+  <p>
+    <label>
+    <div align="center">
+      <input type="submit" name="Submit" value="VIEW REPORTS" />
+    </div>
+    </label>
+  </p>
+  <p align="center">&nbsp; </p>
+</form>
+</body>
+</html>

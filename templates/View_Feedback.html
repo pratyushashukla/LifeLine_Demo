@@ -1,0 +1,37 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends 'first_page.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <div align="center">
+    <table width="516" height="137" border="0">
+      <tr>
+        <th width="191" height="74">DATE</th>
+        <th width="156">USER NAME</th>
+        <th width="155">FEEDBACK </th>
+      </tr>
+      {% for i in val %}
+      <tr>
+        <td height="47"><div align="center">{{i[3]}}</div></td>
+        <td><div align="center">{{i[0]}} {{i[1]}}</div></td>
+        <td> <div align="center">{{i[2]}}&nbsp;</div></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <p>
+  <label>
+  <div align="center">
+  </div>
+  </label>
+  </p>
+  <p align="center">&nbsp; </p>
+</form>
+</body>
+{% endblock %}
+<!--</html>-->

@@ -1,0 +1,60 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends 'first_page_donor.html' %}
+{% block body %}
+
+
+<body>
+<form id="form1" name="form1" method="post" action="/add_item_details">
+   <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+  <table width="743" height="287" border="0" align="center">
+    <tr>
+      <th width="192">ITEM NAME </th>
+      <th width="230">QUANTITY</th>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td> {{i[0]}}&nbsp;</td>
+      <td>&nbsp;{{i[1]}} </td>
+      <th width="165"><a href="/edit_item?id={{i[2]}}">EDIT</a></th>
+      <th width="138"><a href="/delete_item?id={{i[2]}}" onclick="return confirm('Are you sure')">DELETE</a></th>
+    </tr>
+    {% endfor %}
+    <tr>
+      <th colspan="4"><label>
+        <style>
+
+      #btn {
+        background-color: #4CAF50;
+        border : none;
+        color : white;
+        padding : 16px 32px;
+        text-decoration : none;
+        margin : 4px 2px;
+        cursor : pointer;
+       }
+    </style>
+        <input type="submit" name="Submit" value="ADD ITEM DETAILS" id="btn" />
+      </label></th>
+    </tr>
+  </table>
+</form>
+</body>{% endblock %}
+<!--</html>-->

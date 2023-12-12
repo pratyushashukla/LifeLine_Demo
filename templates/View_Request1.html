@@ -1,0 +1,51 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends 'first_page_donor.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/requested_item">
+  <table width="719" height="172" border="0">
+    <tr>
+      <th width="223" height="57">ITEM TYPE </th>
+      <td colspan="3"><select name="select">
+        {% for i in val%}
+        <option value="{{i[0]}}">{{i[2]}}</option>
+        {%endfor%}
+      </select>
+        <style>
+
+      #btn {
+        background-color: #4CAF50;
+        border : none;
+        color : white;
+        padding : 16px 32px;
+        text-decoration : none;
+        margin : 4px 2px;
+        cursor : pointer;
+       }
+    </style>
+      <input type="submit" name="Submit" value="Search" id="btn" /></td>
+    </tr>
+    {%if(vals)%}
+    <tr>
+      <th height="58"><div align="center">ITEM NAME </div></th>
+      <th width="187"><div align="center">USER NAME </div></th>
+      <th width="154"><div align="center">QUANTITY</div></th>
+    </tr>
+    {%for i in vals%}
+    <tr>
+      <td height="47"><div align="center">{{i[0]}}</div></td>
+      <td height="47"><div align="center">{{i[1]}}{{i[2]}}</div></td>
+      <td height="47" colspan="2"><div align="center">{{i[3]}}</div></td>
+      <th width="136"><a href="/assign_agent?id={{i[4]}}">ASSIGN</a></th>
+    </tr>
+    {%endfor%}{%endif%}
+  </table>
+</form>
+</body>
+<!--</html>-->
+{% endblock %}

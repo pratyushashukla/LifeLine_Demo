@@ -1,0 +1,39 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends 'first_page_donor.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <div align="center">
+    <table width="907" height="137" border="0">
+      <tr>
+
+        <th width="130">REPORT</th>
+        <th>Date</th>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      {%for i in vals%}
+      <tr>
+
+        <th><a href="static/report/{{i[3]}}">DOWNLOAD</a></th>
+        <th>{{i[2]}}</th>
+
+        <th width="141"><a href="/delete_report?id={{i[0]}}" onclick="return confirm('are you sure?')">DELETE</a></th>
+      </tr>
+      {%endfor%}
+    </table>
+  </div>
+  <p>
+  <label>
+  <div align="center"></div>
+  </label>
+  </p>
+  <p align="center">&nbsp; </p>
+</form>
+</body>
+<!--</html>-->
+{% endblock %}

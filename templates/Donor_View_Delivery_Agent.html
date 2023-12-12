@@ -1,0 +1,69 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head> -->
+{% extends 'first_page_donor.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/add_delivery_agent">
+   <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+  <table width="923" height="131" border="0">
+    <tr>
+      <th width="160" height="63"><div align="center">NAME</div></th>
+      <th width="136"><div align="center">GENDER</div></th>
+      <th width="147"><div align="center">PLACE</div></th>
+      <th width="141"><div align="center">EMAIL</div></th>
+      <th><div align="center">PHONE</div></th>
+      <th><div align="center"></div></th>
+      <th><div align="center"></div></th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td height="60"><div align="center">{{i[2]}} {{i[3]}}</div></td>
+      <td><div align="center">{{i[4]}}</div></td>
+      <td><div align="center">{{i[6]}}</div></td>
+      <td><div align="center">{{i[7]}}</div></td>
+      <td width="116"><div align="center">{{i[8]}}</div></td>
+      <th width="102"><div align="center"><a href="/edit_deliveryagent?id={{i[1]}}">EDIT</a></div></th>
+      <th width="91"><div align="center"><a href="/delete_deliveryagent?id={{i[0]}}" onClick="return confirm('Are you sure?')" >DELETE</a></div></th>
+    </tr>
+    {% endfor %}
+  </table>
+  <p>
+    <label>
+
+    <div align="center">
+      <style>
+
+      #btn {
+        background-color: #4CAF50;
+        border : none;
+        color : white;
+        padding : 16px 32px;
+        text-decoration : none;
+        margin : 4px 2px;
+        cursor : pointer;
+       }
+    </style>
+      <input type="submit" name="Submit" value="ADD DELIVERY AGENT" id="btn" />
+    </div>
+    </label>
+  </p>
+</form>
+</body>
+{% endblock %}
+<!-- </html> -->
