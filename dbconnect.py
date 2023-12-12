@@ -1,7 +1,8 @@
 import pymysql
+from os import environ
 
 def get_connection():
-    return pymysql.connect(host='localhost', port=3306, user='root', passwd='postgres', db='lifeline')
+    return pymysql.connect(host=environ['DB_HOST'], port=int(environ['DB_PORT']), user=environ['DB_USER'], passwd=environ['DB_PASSWORD'], db=environ['DB_NAME'])
 
 def execute_query(q, val=None):
     con = get_connection()
