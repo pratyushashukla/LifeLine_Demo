@@ -1,11 +1,12 @@
 import smtplib
 from email.mime.text import MIMEText
-
+from dotenv import load_dotenv
 from flask import *
 from werkzeug.utils import secure_filename
 
 from dbconnect import *
 
+load_dotenv()
 app=Flask(__name__)
 app.secret_key='abc'
 import functools
